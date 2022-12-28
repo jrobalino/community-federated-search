@@ -5,7 +5,6 @@ const clientId = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
 const devPortalDomain = 'https://dev.frontapp.com/docs/';
 
-
 const https = require('https');
 
 let oauthToken = '';
