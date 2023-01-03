@@ -278,7 +278,7 @@ async function updateSearchIndex(token, data) {
 
     const req = https.request(options, (res) => {
       if (res.statusCode === 201) {
-        console.log('success');
+        console.log('Success!');
         resolve();
       } else {
         reject(new Error(`Insided Update Federated Search Index request failed: ${res.statusCode} ${res.text}`));
