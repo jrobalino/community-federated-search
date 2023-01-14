@@ -6,11 +6,10 @@ const clientSecret = process.env.CLIENT_SECRET;
 const devPortalDomain = 'https://dev.frontapp.com/docs/';
 
 const https = require('https');
-const querystring = require('querystring');
 
 let oauthToken = '';
 
-function getCategories() {
+async function getCategories() {
 // Retrieve all the Developer Portal documentation categories from Readme
 // https://docs.readme.com/main/reference/getcategories
   console.log('Getting all categories from Readme...');
