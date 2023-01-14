@@ -69,7 +69,7 @@ async function getDocSlugs(categories: string[]): Promise<string[]> {
 
   console.log('Getting all docs from each category...');
 
-  const results: string[] = [];
+  let results: string[] = [];
 
   const dataPromises = categories.map((category) => {
     return new Promise((resolve, reject) => {
@@ -141,7 +141,7 @@ async function getDocs(slugs: string[]): Promise<Doc[]> {
 
   console.log('Getting doc contents...');
 
-  const results: Doc[] = [];
+  let results: Doc[] = [];
 
   const dataPromises = slugs.map((slug: string) => {
     return new Promise((resolve, reject) => {
