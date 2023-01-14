@@ -301,13 +301,18 @@ async function updateSearchIndex(token, data) {
 // Get all categories from readme, then get all docs for each category, then get title, URLs, and body content for each doc
 // Delete the Insided federated search index for the Developer Portal and then upload the latest content
 
-getAuthToken(clientId, clientSecret).then((token) => {
-  oauthToken = token;
-  getCategories().then((categories) => {
-    getDocSlugs(categories).then((slugs) => {
-      getDocs(slugs).then((docs) => {
-        deleteSearchIndex(oauthToken).then(updateSearchIndex(token, docs));
-      });
-    });
-  });
-});
+async function processData() {
+  try {
+    const token = await getAuthToken(clientId, clientSecret);
+    oauthToken = token;
+    const categories = await getCategories();
+    const slugs = await getDocSlugs(categories);
+    const docs = await getDocs(slugs);
+    await deleteSearchIndex(oauthToken);
+    await updateSearchIndex(token, docs);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+processData();
